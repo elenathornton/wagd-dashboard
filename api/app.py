@@ -1,10 +1,12 @@
 from flask import Flask
 
-app = Flask(__name__)
+api = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    return {
-      'resultStatus': 'SUCCESS',
-      'message': "Hello Api Handler"
-      }
+@api.route('/')
+def start():
+    response_body = {
+        "name": "Nagato",
+        "about" :"Hello! I'm a full stack developer that loves python and javascript"
+    }
+
+    return response_body
