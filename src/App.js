@@ -1,11 +1,10 @@
-import logo from "./logo.svg";
-import "./App.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
+import { Routes, Route } from "react-router-dom"
+import Home from './Home';
+import Analytic from './Analytic';
 
 function App() {
-  const [getMessage, setGetMessage] = useState({});
-
   useEffect(() => {
     axios
       .get("http://127.0.0.1:5000/")
@@ -18,20 +17,10 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code> src / App.js </code> and save to reload.{" "}
-        </p>{" "}
-        <div>
-          {" "}
-          {getMessage.status === 200 ? (
-            <h3> {getMessage} </h3>
-          ) : (
-            <h3> LOADING </h3>
-          )}
-        </div>
-      </header>{" "}
+      <Routes>
+        <Route path="/" element={ <Home/> } />
+        <Route path="analytic" element={ <Analytic/> } />
+      </Routes>
     </div>
   );
 }
