@@ -1,8 +1,8 @@
 {
     "name": "app",
     "version": "0.1.0",
-    "private": true,
-    "proxy": "http://localhost:5000",
+    "private": false,
+    "proxy": "https://api-4272vbu5ea-uc.a.run.app",
     "dependencies": {
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",

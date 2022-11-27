@@ -1,4 +1,4 @@
-from flask import Flask, render_template, make_response
+from flask import Flask, render_template, make_response, jsonify
 import os
 import time
 
@@ -13,7 +13,7 @@ def format_server_time():
 @app.route('/')
 def index():
     context = {'server_time': format_server_time()}
-    return render_template('index.html', context=context)
+    return jsonify(context)
 
 
 if __name__ == '__main__':
