@@ -5,8 +5,8 @@ api = Flask(__name__)
 @api.route('/')
 def start():
     response_body = {
-        "name": "Nagato",
-        "about" :"Hello! I'm a full stack developer that loves python and javascript"
+        "name": "Test",
+        "about" :"This is a test"
     }
 
     return response_body
