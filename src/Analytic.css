@@ -1,0 +1,7 @@
+body {
+    background-color: var(--gray);
+}
+
+h1 {
+    color: var(--white);
+}
