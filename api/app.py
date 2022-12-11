@@ -27,7 +27,9 @@ def fileUpload():
     file = request.files['file']
     filename = file.filename
     print(filename)
-    destination="/".join(['raw_data', filename])
+    destination="/".join(['/home/ec2-user/wagd-dashboard/api', filename])
+    print(destination)
+    print(filename)
     file.save(destination)
     session['uploadFilePath']=destination
     response="success"
