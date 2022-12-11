@@ -4,7 +4,6 @@ from flask import Flask, request, session
 import os
 import csv
 from flask_cors import CORS, cross_origin
-import logging
 
 
 
@@ -28,11 +27,11 @@ def start():
 
 @api.route('/upload', methods=['POST'])
 def fileUpload():
-    logging.info("upload`")
+    print("upload`")
     file = request.files['file']
-    logging.info(file)
+    print(file)
     filename = file.filename
-    logging.info(filename)
+    print(filename)
     # destination="/".join(['/home/ec2-user/wagd-dashboard/api/raw_data', filename])
     # print(destination)
     # file.save(destination)
@@ -42,8 +41,8 @@ def fileUpload():
 
 
 def parse(file_name):
-    logging.info("parse")
-    logging.info(file_name)
+    print("parse")
+    print(file_name)
     f=open("raw_data/"+file_name)
     # skip = 3
     new_row = []
