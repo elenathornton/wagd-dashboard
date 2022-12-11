@@ -77,3 +77,8 @@ def parse(file_name):
     # print(num_row)
     df = pd.DataFrame(num_row, columns =['ax', 'ay', 'az', 'gx', 'gy', 'gz', 'yaw', 'pitch', 'roll'])
     df.to_csv( "clean_data/" + file_name + ".csv", index = False)
+    
+    
+    
+if __name__ == "__main__":
+    api.run(host='0.0.0.0', port=8080, debug = True)

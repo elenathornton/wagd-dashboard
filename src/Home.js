@@ -22,6 +22,8 @@ class Home extends React.Component {
         data.append('file', this.uploadInput.files[0]);
         data.append('filename', this.fileName.value);
 
+        console.log(data)
+
         fetch('http://18.189.43.26:8080/upload', {
             method: 'POST',
             body: data,
