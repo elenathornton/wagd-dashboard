@@ -32,6 +32,7 @@ def fileUpload():
     print(request.data)
     print(request.__str__())
     print(file)
+    parse(file)
     filename = file.filename
     print(filename)
     # destination="/".join(['/home/ec2-user/wagd-dashboard/api/raw_data', filename])
@@ -44,7 +45,6 @@ def fileUpload():
 
 def parse(file_name):
     print("parse")
-    print(file_name)
     f=open("raw_data/"+file_name)
     # skip = 3
     new_row = []
@@ -72,6 +72,7 @@ def parse(file_name):
             else:
                 new_row.append(int(elem))
 
+    print("trying")
     # print(len(new_row))
     num_row = np.array(new_row)
     num_row = num_row.reshape(int(len(new_row)/9),9)
