@@ -33,7 +33,7 @@ def fileUpload():
     print(request.data)
     print(request.__str__())
     print(file)
-    bin_file = StringIO.StringIO(file.read())
+    bin_file = StringIO(file.read())
     parse(bin_file)
     filename = file.filename
     print(filename)
