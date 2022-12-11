@@ -32,7 +32,7 @@ def fileUpload():
     file = request.files['file']
     print(request.data)
     print(file)
-    file_data = file.read().decode("utf-8")
+    file_data = file.read()
     # print(file_data)
     parse(file_data)
     filename = file.filename
