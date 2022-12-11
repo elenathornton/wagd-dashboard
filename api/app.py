@@ -31,10 +31,10 @@ def fileUpload():
     print("upload`")
     file = request.files['file']
     print(request.data)
-    print(request.__str__())
     print(file)
-    bin_file = StringIO(file.read())
-    parse(bin_file)
+    file_data = file.read().decode("utf-8")
+    print(file_data)
+    parse(file_data)
     filename = file.filename
     print(filename)
     # destination="/".join(['/home/ec2-user/wagd-dashboard/api/raw_data', filename])
