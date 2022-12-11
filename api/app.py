@@ -33,7 +33,7 @@ def fileUpload():
     print(request.data)
     print(file)
     file_data = file.read().decode("utf-8")
-    print(file_data)
+    # print(file_data)
     parse(file_data)
     filename = file.filename
     print(filename)
@@ -52,6 +52,7 @@ def parse(file_name):
     new_row = []
     for row in csv.reader(file_name):
         for i, elem in enumerate(row):
+            print(elem)
             elem = elem.replace(" ","")
             if elem == '':
                 pass
