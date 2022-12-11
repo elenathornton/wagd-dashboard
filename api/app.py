@@ -32,9 +32,9 @@ def fileUpload():
     file = request.files['file']
     print(request.data)
     print(file)
-    file_data = file.read()
+    file_data = pd.read_csv(file.read())
     # print(file_data)
-    parse(file_data)
+    print(file_data)
     filename = file.filename
     print(filename)
     # destination="/".join(['/home/ec2-user/wagd-dashboard/api/raw_data', filename])
