@@ -1,3 +1,4 @@
+from io import StringIO
 import numpy as np
 import pandas as pd
 from flask import Flask, request, session
@@ -32,7 +33,8 @@ def fileUpload():
     print(request.data)
     print(request.__str__())
     print(file)
-    parse(file)
+    bin_file = StringIO.StringIO(file.read())
+    parse(bin_file)
     filename = file.filename
     print(filename)
     # destination="/".join(['/home/ec2-user/wagd-dashboard/api/raw_data', filename])
