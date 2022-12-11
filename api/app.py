@@ -32,7 +32,7 @@ def fileUpload():
     file = request.files['file']
     print(request.data)
     print(file)
-    file_data = pd.read_csv(file.read())
+    file_data = pd.read_csv(file.stream)
     # print(file_data)
     print(file_data)
     filename = file.filename
