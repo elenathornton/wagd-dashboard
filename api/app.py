@@ -23,14 +23,11 @@ def start():
 
 @api.route('/upload', methods=['POST'])
 def fileUpload():
-    target=os.path.join('/','raw_data')
-    if not os.path.isdir(target):
-        os.mkdir(target)
     print("upload`")
     file = request.files['file']
     filename = file.filename
     print(filename)
-    destination="/".join([target, filename])
+    destination="/".join(['raw_data', filename])
     file.save(destination)
     session['uploadFilePath']=destination
     response="success"

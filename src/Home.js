@@ -18,6 +18,7 @@ class Home extends React.Component {
     }
 
     handleUploadImage(ev) {
+        console.log("upload")
         ev.preventDefault();
 
         const data = new FormData();
@@ -29,7 +30,7 @@ class Home extends React.Component {
             body: data,
         }).then((response) => {
             response.json().then((body) => {
-                this.setState({ imageURL: `http://localhost:8000/${body.file}` });
+                this.setState({ imageURL: `http://18.189.43.26:8080/${body.file}` });
             });
         });
     }
@@ -49,7 +50,9 @@ class Home extends React.Component {
                         </div>
                         <br />
                         <div>
-                            <Link to="analytic"><button>Upload</button></Link>
+                            {/* <Link to="analytic"> */}
+                                <button>Upload</button>
+                            {/* </Link> */}
                         </div>
                     </form>
                 </header>
