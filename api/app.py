@@ -45,10 +45,10 @@ def fileUpload():
 
 def parse(file_name):
     print("parse")
-    f=open("raw_data/"+file_name)
+    # f=open("raw_data/"+file_name)
     # skip = 3
     new_row = []
-    for row in csv.reader(f):
+    for row in csv.reader(file_name):
         for i, elem in enumerate(row):
             elem = elem.replace(" ","")
             if i!=0 and i%8==0 and i!=len(row)-1:
