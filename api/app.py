@@ -29,7 +29,8 @@ def start():
 def fileUpload():
     print("upload`")
     file = request.files['file']
-    print(request)
+    print(request.data)
+    print(request.__str__())
     print(file)
     filename = file.filename
     print(filename)
