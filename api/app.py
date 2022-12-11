@@ -7,6 +7,7 @@ from flask_cors import CORS, cross_origin
 
 
 api = Flask(__name__)
+api.debug = True
 cors = CORS(api)
 api.config['CORS_HEADERS'] = 'Content-Type'
 api.secret_key = 'super secret key'
@@ -30,11 +31,11 @@ def fileUpload():
     print(file)
     filename = file.filename
     print(filename)
-    destination="/".join(['/home/ec2-user/wagd-dashboard/api/raw_data', filename])
-    print(destination)
+    # destination="/".join(['/home/ec2-user/wagd-dashboard/api/raw_data', filename])
+    # print(destination)
     print(filename)
     # file.save(destination)
-    session['uploadFilePath']=destination
+    # session['uploadFilePath']=destination
     response="success"
     return response
 
