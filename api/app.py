@@ -29,6 +29,7 @@ def start():
 def fileUpload():
     print("upload`")
     file = request.files['file']
+    print(request)
     print(file)
     filename = file.filename
     print(filename)
