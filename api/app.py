@@ -53,6 +53,8 @@ def parse(file_name):
     for row in csv.reader(file_name):
         for i, elem in enumerate(row):
             elem = elem.replace(" ","")
+            if elem == '':
+                pass
             if i!=0 and i%8==0 and i!=len(row)-1:
                 if elem.count('-') == 2:
                     split_number = elem.split("-")
