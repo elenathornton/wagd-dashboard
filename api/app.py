@@ -1,4 +1,5 @@
 from io import StringIO
+import math
 import numpy as np
 import pandas as pd
 from flask import Flask, request, session
@@ -36,54 +37,56 @@ def fileUpload():
     # print(file_data)
     print(file_data)
     filename = file.filename
-    print(filename)
-    # destination="/".join(['/home/ec2-user/wagd-dashboard/api/raw_data', filename])
-    # print(destination)
-    # file.save(destination)
-    # session['uploadFilePath']=destination
-    response="success"
+    
+    file_data['raw_acceleration'] = file_data.apply(lambda x: math.sqrt(x.ax**2 + x.ay**2 + x.az**2))
+
+   
+    response= {"status": 200,
+                "duration": 10.3,
+                "distance": 10,
+                "acceleration": [],
+                "velocity": [],
+                "gait metrics": []
+            }
     return response
 
 
-def parse(file_name):
-    print("parse")
-    # f=open("raw_data/"+file_name)
-    # skip = 3
-    new_row = []
-    for row in csv.reader(file_name):
-        for i, elem in enumerate(row):
-            print(elem)
-            elem = elem.replace(" ","")
-            if elem == '':
-                pass
-            if i!=0 and i%8==0 and i!=len(row)-1:
-                if elem.count('-') == 2:
-                    split_number = elem.split("-")
-                    new_row.append(-1*int(split_number[1]))
-                    new_row.append(-1*int(split_number[2]))
-                elif elem.count('-') == 1:
-                    if elem[0]=="-":
-                        # print(elem)
-                        new_row.append(int(elem[:4]))
-                        new_row.append(int(elem[4:]))
-                    else:
-                        split_number = elem.split("-")
-                        # print(elem)
-                        new_row.append(int(split_number[0]))
-                        new_row.append(-1 * int(split_number[1]))
-                elif elem.count('-') == 0:
-                    new_row.append(int(elem[:3]))
-                    new_row.append(int(elem[3:]))
-            else:
-                new_row.append(int(elem))
-
-    print("trying")
-    # print(len(new_row))
-    num_row = np.array(new_row)
-    num_row = num_row.reshape(int(len(new_row)/9),9)
-    # print(num_row)
-    df = pd.DataFrame(num_row, columns =['ax', 'ay', 'az', 'gx', 'gy', 'gz', 'yaw', 'pitch', 'roll'])
-    df.to_csv( "clean_data/" + file_name + ".csv", index = False)
+# def parse(file_name):
+#     # f=open("raw_data/"+file_name)
+#     # skip = 3
+#     new_row = []
+#     for row in csv.reader(file_name):
+#         for i, elem in enumerate(row):
+#             print(elem)
+#             elem = elem.replace(" ","")
+#             if elem == '':
+#                 pass
+#             if i!=0 and i%8==0 and i!=len(row)-1:
+#                 if elem.count('-') == 2:
+#                     split_number = elem.split("-")
+#                     new_row.append(-1*int(split_number[1]))
+#                     new_row.append(-1*int(split_number[2]))
+#                 elif elem.count('-') == 1:
+#                     if elem[0]=="-":
+#                         # print(elem)
+#                         new_row.append(int(elem[:4]))
+#                         new_row.append(int(elem[4:]))
+#                     else:
+#                         split_number = elem.split("-")
+#                         # print(elem)
+#                         new_row.append(int(split_number[0]))
+#                         new_row.append(-1 * int(split_number[1]))
+#                 elif elem.count('-') == 0:
+#                     new_row.append(int(elem[:3]))
+#                     new_row.append(int(elem[3:]))
+#             else:
+#                 new_row.append(int(elem))
+#     # print(len(new_row))
+#     num_row = np.array(new_row)
+#     num_row = num_row.reshape(int(len(new_row)/9),9)
+#     # print(num_row)
+#     df = pd.DataFrame(num_row, columns =['ax', 'ay', 'az', 'gx', 'gy', 'gz', 'yaw', 'pitch', 'roll'])
+#     df.to_csv( "clean_data/" + file_name + ".csv", index = False)
     
     
     
