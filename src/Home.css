@@ -1,0 +1,38 @@
+:root {
+    --lightblue: #99c2ff;
+    --lighterblue: #cce0ff;
+    --gray: #282c34;
+    --white: white;
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .App-header {
+    background-color: var(--gray);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: var(--white);
+  }
+  
+  button {
+    margin-top: 30px;
+    padding: 10px 20px 10px 20px;
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--gray);
+    background-color: var(--lightblue);
+    border: 0;
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+  
+  button:hover {
+    background-color: var(--lighterblue);
+    cursor: pointer;
+  }
