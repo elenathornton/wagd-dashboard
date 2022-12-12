@@ -41,17 +41,18 @@ def fileUpload():
     file_data['timestamp'] = pd.Series()
     print(file_data['timestamp'])
     print(file_data.loc[0, 'timestamp'])
-    file_data.loc[0, 'timestamp'] = 0
+    file_data.loc[0, 'timestamp'] = 0 # in milliseconds 100 hz = .01 s = 10 milliseconds
     
     for i in range(1, len(file_data)):
-        file_data.loc[i, 'timestamp'] = (file_data.loc[i, 'val'] - file_data.loc[i-1, 'timestamp']) * 0.4  + file_data.loc[i-1, 'timestamp']
+        file_data.loc[i, 'timestamp'] = (file_data.loc[i-1, 'timestamp']) + 10
 
     file_data['raw_acceleration'] = file_data.apply(lambda x: math.sqrt(x['ax']**2 + x['ay']**2 + x['az']**2), axis=1)
 
     print(file_data)
     response= {"status": 200,
-                "duration": 10.3,
+                "duration_ms": file_data['timestamp'].iat[-1],
                 "distance": 10,
+                "time_ms": file_data['timestamp'].array,
                 "acceleration": file_data['raw_acceleration'].array,
                 "velocity": [],
                 "gait metrics": []
