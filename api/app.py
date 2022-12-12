@@ -51,11 +51,11 @@ def fileUpload():
     print(file_data)
     response= {"status": 200,
                 "duration_ms": file_data['timestamp'].iat[-1],
-                "distance": 10,
-                "time_ms": file_data['timestamp'].array,
-                "acceleration": file_data['raw_acceleration'].array,
-                "velocity": [],
-                "gait metrics": []
+                "distance": "TODO",
+                "time_ms": file_data['timestamp'].to_json(),
+                "acceleration": file_data['raw_acceleration'].to_json(),
+                "velocity": ["TODO"],
+                "gait metrics": ["TODO"]
             }
     print(response)
     return response
