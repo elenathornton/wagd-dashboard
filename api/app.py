@@ -39,7 +39,7 @@ def fileUpload():
     filename = file.filename
     
     
-    file_data['raw_acceleration'] = file_data.apply(lambda x: math.sqrt(x['ax']**2 + x['ay']**2 + x['az']**2))
+    file_data['raw_acceleration'] = file_data.apply(lambda x: math.sqrt(x['ax']**2 + x['ay']**2 + x['az']**2), axis=1)
 
     print(file_data)
     response= {"status": 200,
