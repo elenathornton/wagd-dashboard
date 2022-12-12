@@ -7,7 +7,7 @@ import Analytic from './Analytic';
 function App() {
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:5000/")
+      .get("http://18.189.43.26:8080/")
       .then((response) => {
         console.log("SUCCESS", response);
       })
