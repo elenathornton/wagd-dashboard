@@ -29,26 +29,34 @@ def start():
 
 @api.route('/upload', methods=['POST'])
 def fileUpload():
-    print("upload`")
+    print("upload")
     file = request.files['file']
-    print(request.data)
-    print(file)
     file_data = pd.read_csv(file.stream)
-    # print(file_data)
-    print(file_data['ax'])
     filename = file.filename
+    print(filename)
     
     
+    
+    # measure timestamp
+    file_data['timestamp'] = pd.Series()
+    print(file_data['timestamp'])
+    print(file_data.loc[0, 'timestamp'])
+    file_data.loc[0, 'timestamp'] = 0
+    
+    for i in range(1, len(file_data)):
+        file_data.loc[i, 'timestamp'] = (file_data.loc[i, 'val'] - file_data.loc[i-1, 'timestamp']) * 0.4  + file_data.loc[i-1, 'timestamp']
+
     file_data['raw_acceleration'] = file_data.apply(lambda x: math.sqrt(x['ax']**2 + x['ay']**2 + x['az']**2), axis=1)
 
     print(file_data)
     response= {"status": 200,
                 "duration": 10.3,
                 "distance": 10,
-                "acceleration": [],
+                "acceleration": file_data['raw_acceleration'].array,
                 "velocity": [],
                 "gait metrics": []
             }
+    print(response)
     return response
 
 
