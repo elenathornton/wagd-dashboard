@@ -38,6 +38,7 @@ def fileUpload():
     print(file_data.columns)
     filename = file.filename
     
+    file_data.apply(lambda f: print(f['ax']))
     
     file_data['raw_acceleration'] = file_data.apply(lambda x: math.sqrt(x['ax']**2 + x['ay']**2 + x['az']**2))
 
