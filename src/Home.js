@@ -24,12 +24,13 @@ class Home extends React.Component {
 
         console.log(data)
 
-        fetch('http://18.189.43.26:8080/upload', {
+        fetch('https://18.189.43.26:8080/upload', {
             method: 'POST',
             body: data,
         }).then((response) => {
+            console.log(response)
             response.json().then((body) => {
-                this.setState({ imageURL: `http://18.189.43.26:8080/${body.file}` });
+                this.setState({ imageURL: `https://18.189.43.26:8080/${body.file}` });
             });
         });
     }
