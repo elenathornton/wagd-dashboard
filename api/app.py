@@ -2,7 +2,7 @@ from io import StringIO
 import math
 import numpy as np
 import pandas as pd
-from flask import Flask, request, session
+from flask import Flask, request, session, jsonify
 import os
 import csv
 from flask_cors import CORS, cross_origin
@@ -24,7 +24,7 @@ def start():
         "Status": "Server is live."
     }
 
-    return response_body
+    return jsonify(response_body)
 
 
 @api.route('/upload', methods=['POST'])
@@ -59,7 +59,7 @@ def fileUpload():
                 "gait metrics": ["TODO"]
             }
     print(response)
-    return response
+    return jsonify(response)
 
 
 # def parse(file_name):
