@@ -56,7 +56,11 @@ def fileUpload():
                 "time_ms": file_data['timestamp'].to_json(),
                 "acceleration": file_data['raw_acceleration'].to_json(),
                 "velocity": ["TODO"],
-                "gait metrics": ["TODO"]
+                "gait metrics": ["TODO"],
+                "yaw": file_data['yaw'].to_json(),
+                "pitch": file_data['pitch'].to_json(),
+                "roll": file_data['roll'].to_json(),
+                    
             }
     print(response)
     return jsonify(response)
