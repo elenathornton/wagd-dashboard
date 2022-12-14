@@ -28,6 +28,7 @@ def start():
 
 
 @api.route('/upload', methods=['POST'])
+@cross_origin()
 def fileUpload():
     print("upload")
     file = request.files['file']
