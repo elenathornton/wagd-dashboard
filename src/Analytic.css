@@ -4,4 +4,41 @@ body {
 
 h1 {
     color: var(--white);
+    margin-bottom: 0;
+}
+
+h2 {
+    color: var(--white);
+    margin: 0;
+    font-weight: normal;
+}
+
+h3 {
+    color: var(--green);
+    display: inline;
+}
+
+.Graph {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.Chart {
+    height: 40vh;
+    margin: auto;
+    padding: 25px;
+    gap: 10px;
+    width: 45%;
+}
+
+img {
+    height: 100px;
+    margin-top: 25px;
+}
+
+.Analytic {
+    margin-bottom: 25px;
 }

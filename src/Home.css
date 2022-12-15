@@ -3,6 +3,7 @@
   --lighterblue: #cce0ff;
   --gray: #282c34;
   --white: white;
+  --green: #7cd1a0;
 }
 
 .App {
@@ -35,4 +36,21 @@ button {
 button:hover {
   background-color: var(--lighterblue);
   cursor: pointer;
+}
+
+.Input-div {
+  text-align: center;
+  align-items: center;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 15px;
+}
+
+input {
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  padding: 5px;
 }

@@ -1,17 +1,76 @@
 import './Home.css';
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { withRouter } from './withRouter';
+// import { Link } from 'react-router-dom';
+// const https = require('https');
 
-function Home() {
-    return (
-        <div>
-            <header className="App-header">
-                <h1>Canine Athletics Dashboard</h1>
-                <p>Upload your .csv file to view analytics!</p>
-                <Link to="analytic"><button>Upload</button></Link>
-            </header>
-        </div>
-    );
+// const httpsAgent = new https.Agent({
+//     rejectUnauthorized: false,
+// });
+
+class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            imageURL: '',
+        };
+
+        this.handleUploadImage = this.handleUploadImage.bind(this);
+    }
+
+    handleUploadImage(ev) {
+        console.log("upload")
+        ev.preventDefault();
+
+        const data = new FormData();
+        data.append('file', this.uploadInput.files[0]);
+        data.append('filename', this.fileName.value);
+
+        console.log(data)
+
+        fetch('http://18.189.43.26:8080/upload', {
+            method: 'POST',
+            body: data,
+        }).then((response) => {
+            console.log(response)
+            response.json().then((body) => {
+                this.setState({ imageURL: `http://18.189.43.26:8080/${body.file}` });
+                console.log(body);
+                this.props.navigate(
+                    '/analytic',
+                    {
+                        state: body,
+                    },
+                );
+            });
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <header className="App-header">
+                    <h1>Canine Athletics Dashboard</h1>
+                    <p>Upload your .csv file to view analytics!</p>
+                    <form onSubmit={this.handleUploadImage}>
+                        <div className="Input-div">
+                            <input ref={(ref) => { this.uploadInput = ref; }} type="file" />
+                        </div>
+                        <div>
+                            <input ref={(ref) => { this.fileName = ref; }} type="text" placeholder="Enter the desired name of file" />
+                        </div>
+                        <br />
+                        <div>
+                            {/* <Link to="analytic"> */}
+                                <button>Upload</button>
+                            {/* </Link> */}
+                        </div>
+                    </form>
+                </header>
+            </div>
+        );
+    }
+
 }
-  
-export default Home;
+
+export default withRouter(Home);
