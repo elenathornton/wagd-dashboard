@@ -127,6 +127,7 @@ def fileUpload():
                 "pitch_y": df['pitch_y'].to_json(),
                 "roll_x": df['roll_x'].to_json(),
                 "roll_y": df['roll_y'].to_json(),
+                "steps": num_steps,
                     
             }
     print(response)
