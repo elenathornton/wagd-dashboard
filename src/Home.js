@@ -24,7 +24,7 @@ class Home extends React.Component {
 
         console.log(data)
 
-        fetch('https://18.189.43.26:8080/upload', {
+        fetch('http://18.189.43.26:8080/upload', {
             method: 'POST',
             body: data,
         }).then((response) => {
