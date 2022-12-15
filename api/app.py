@@ -8,7 +8,6 @@ import csv
 from flask_cors import CORS, cross_origin
 import math
 from scipy.signal import filtfilt, butter
-from quaternion import quaternion, from_rotation_vector, rotate_vectors
 
 
 api = Flask(__name__)
